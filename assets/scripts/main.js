@@ -16,8 +16,8 @@ for(let nbrDot=0;nbrDot<nbrsimgs;nbrDot++){
     //ajout de la class input
     nouveauInput.className="dot"
     nouveauInput.Name="selecteur"
-   /*nouveauInput.onclick= nbrDot
-     nouveauInput.value=(nbrDot)*/
+   nouveauInput.type="button"
+   /*  nouveauInput.value=(nbrDot)*/
     // Récupérer un élément parent existant
     let divDot = document.querySelector(".dots ")
     // Ajouter le nouvel élément au parent
