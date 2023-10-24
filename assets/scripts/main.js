@@ -1,29 +1,23 @@
 
-let compteur=0  //creation d une variable compteur
+let compteur=0  // initialisation d une variable compteur
 let imagefondcarrousel = document.querySelector(".banner-img ")//recuperation imag de fond
 let nbrsimgs=slides.length//creation d une variable du nbrs d'image
-let insertagline= document.querySelector("#banner p ")
-insertagline.innerHTML = slides[compteur]["tagLine"]
+let insertagline= document.querySelector("#banner p ")//recuperation de l'element p (pour tagline)
+insertagline.innerHTML = slides[compteur]["tagLine"]//insertion de la tagline sur page d ' acueil
 
-//creation des input
-for(let nbrDot=0;nbrDot<nbrsimgs;nbrDot++){ 
-    let nouveauInput = document.createElement("input")
-    //ajout de la class input
-    nouveauInput.className="dot"
-    nouveauInput.Name="selecteur"
-   nouveauInput.type="button"
-   /*  nouveauInput.value=(nbrDot)*/
-    // Récupérer un élément parent existant
-    let divDot = document.querySelector(".dots ")
-    // Ajouter le nouvel élément au parent
-    divDot.appendChild(nouveauInput);
+
+for(let nbrDot=0;nbrDot<nbrsimgs;nbrDot++){ //boucle pour insersion liste 
+    let nouveauLi = document.createElement("li")//création d'un variable contenant un nouvelle element de type <li></li>
+    nouveauLi.className="dot"//ajout de la class "dot"a <li>
+    let divDot = document.querySelector(".dots ")//recupération de l'élément parent   
+    divDot.appendChild(nouveauLi);// Ajouter le nouvel élément au parent
 }
 
-let InputPresent = document.querySelectorAll("#banner input")//recuperation des input
-InputPresent[compteur].classList.add("dot_selected")//Ajoute d'une class
-let InputSelect =InputPresent [compteur]
+let LiPresent = document.querySelectorAll("#banner li")//recuperation des li
+LiPresent[compteur].classList.add("dot_selected")//Ajoute d'une class a <li> corespondant a l image aficher
+let LiSelect =LiPresent [compteur]//creation d'une variable pour <li> corespondant a l image aficher
 let arrowcaroussel = document.querySelectorAll("#banner .arrow");//recuperation des 2 fleches
-            //changement au clique des flèches
+
 for (let i=0; i<arrowcaroussel.length;i++){
     let arrowclick=arrowcaroussel[i]
     arrowclick.addEventListener("click",(event)=>{
@@ -41,28 +35,29 @@ for (let i=0; i<arrowcaroussel.length;i++){
         }
       }
       imagefondcarrousel.setAttribute("src", slides[compteur]["image"])//changer src de l'image
-      InputPresent[compteur].classList.add("dot_selected")//Ajoute d'une class
-      InputSelect.classList.remove("dot_selected")//Suppression d'une class
-      InputSelect=InputPresent[compteur]//
+      LiPresent[compteur].classList.add("dot_selected")//Ajoute d'une class
+      LiSelect.classList.remove("dot_selected")//Suppression d'une class
+      LiSelect=LiPresent[compteur]//
       insertagline.innerHTML = slides[compteur]["tagLine"]//changer la tag-line
     })
 }
+
                   //changement au clique des Dot
-for (let a=0; a<InputPresent.length;a++){
-  let Inputclick=InputPresent[a]
-  Inputclick.addEventListener("click",(event)=>{
-    input=event.target
-    console.log(input)
-    if (input===InputPresent[a]){
+for (let a=0; a<LiPresent.length;a++){
+  let Liclick=LiPresent[a]
+  Liclick.addEventListener("click",(event)=>{
+    Li=event.target
+   
+    if (Li===LiPresent[a]){
       compteur=a
 
     }
     imagefondcarrousel.setAttribute("src", slides[compteur]["image"])//changer src de l'image
-    InputPresent[compteur].classList.add("dot_selected")//Ajoute d'une class
-    InputSelect.classList.remove("dot_selected")//Suppression d'une class
-    InputSelect=InputPresent[compteur]//
+    LiPresent[compteur].classList.add("dot_selected")//Ajoute d'une class
+    LiSelect.classList.remove("dot_selected")//Suppression d'une class
+    LiSelect=LiPresent[compteur]//
     insertagline.innerHTML = slides[compteur]["tagLine"]//changer la tag-line
-  })
+    })
 }
 
 
