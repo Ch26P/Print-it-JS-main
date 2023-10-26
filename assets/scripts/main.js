@@ -51,13 +51,14 @@ for (let a=0; a<LiPresent.length;a++){
     if (Li===LiPresent[a]){
       compteur=a
 
-    }
+    if(LiPresent[a]!== LiSelect){
+    
     imagefondcarrousel.setAttribute("src", slides[compteur]["image"])//changer src de l'image
     LiPresent[compteur].classList.add("dot_selected")//Ajoute d'une class
     LiSelect.classList.remove("dot_selected")//Suppression d'une class
     LiSelect=LiPresent[compteur]//
     insertagline.innerHTML = slides[compteur]["tagLine"]//changer la tag-line
-    })
+   } }})
 }
 
 
